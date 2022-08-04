@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Francois.Utilities2D;
 
 public class FieldOfView : MonoBehaviour
 {
@@ -25,12 +26,14 @@ public class FieldOfView : MonoBehaviour
         // Get the mesh component on this game object
         GetComponent<MeshFilter>().mesh = mesh;
         FOV = 90f;
-        viewDistance = 4f;
+        viewDistance = 5f;
         origin = Vector3.zero;
     }
 
     void LateUpdate() {
         aimDirection = GetAngleFromVectorFloat(rotatingObject.transform.forward) + FOV / 2f; // .forward .up .right
+
+        // FrancoisUtilities2D.DebugDrawTowardsTransformDirection(rotatingObject, aimDirection, "right");
 
         // Settings
         int rayCount = 50; // Increase for smoother cone edge
