@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 559807255230769186}
   - component: {fileID: 3572149630487785528}
   - component: {fileID: 1100178381884820440}
+  - component: {fileID: 7645937444558348850}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 559807255230769185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.51, y: 1.82, z: 0}
-  m_LocalScale: {x: 0.77903, y: 0.77903, z: 0.77903}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 909439794198591890}
@@ -170,6 +171,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 2.32}
   m_EdgeRadius: 0
+--- !u!114 &7645937444558348850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559807255230769185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51674407187040efb535da7247fcc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldOfViewObject: {fileID: 4532597941661117370}
+  chaseObject: {fileID: 0}
 --- !u!1 &1075074875266392791
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,14 +295,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4532597941661117370}
-  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2836477, y: 1.2836477, z: 1.2836477}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 559807255230769187}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3117767445247527304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,9 +315,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0efd3897c2e4ec5945e1315a45a18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
+  rotatingObject: {fileID: 559807255230769185}
+  viewBlockLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!23 &494585066505106321
 MeshRenderer:
   m_ObjectHideFlags: 0

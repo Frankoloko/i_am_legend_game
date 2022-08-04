@@ -31,9 +31,8 @@ public class FieldOfView : MonoBehaviour
     }
 
     void LateUpdate() {
-        aimDirection = GetAngleFromVectorFloat(rotatingObject.transform.forward) + FOV / 2f; // .forward .up .right
-
-        // FrancoisUtilities2D.DebugDrawTowardsTransformDirection(rotatingObject, aimDirection, "right");
+        aimDirection = FrancoisUtilities2D.GetAngleFromVector3(Vector3.zero) + FOV / 2f;
+        // FrancoisUtilities2D.DebugDrawTowardsAngle(rotatingObject, aimDirection); // Leave here for debug purposes
 
         // Settings
         int rayCount = 50; // Increase for smoother cone edge
@@ -53,7 +52,7 @@ public class FieldOfView : MonoBehaviour
         // Then we use the end of those rays as a way to draw the mesh
         for (int i = 0; i <= rayCount; i++) {
             // Convert aimDirection into vector3
-            float angleRad = aimDirection * (Mathf.PI/180f);
+            float angleRad = aimDirection * ( Mathf.PI / 180f );
             Vector3 vectorFromAngle = new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
 
             // Check if the light ray hits anything
