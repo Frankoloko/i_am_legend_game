@@ -31,6 +31,20 @@ namespace Francois.Utilities2D {
             return angleTowardsToObject;
         }
 
+        public static List<GameObject> GetAllParentsUpwards(GameObject fromObject) {
+            // This function will return all the parents from this game object going upwards
+
+            List<GameObject> parents = new List<GameObject>();
+            GameObject currentObject = fromObject;
+
+            while (currentObject.transform.parent) {
+                parents.Add(currentObject);
+                currentObject = currentObject.transform.parent.gameObject;
+            }
+
+            return parents;
+        }
+
         // VOID FUNCTIONS
 
         public static void ExamplePrint(string text) {
