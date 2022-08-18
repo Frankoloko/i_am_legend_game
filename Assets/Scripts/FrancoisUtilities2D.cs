@@ -45,6 +45,39 @@ namespace Francois.Utilities2D {
             return parents;
         }
 
+        public static GameObject GetFirstObjectInView(GameObject fromObject, Vector3 direction, float distance, string[] ignoreNamesContaining) {
+            // This function will get the first object in view, with parameters to change the result
+            
+            // Cast a ray from this position towards the searcObject's direction
+            RaycastHit2D[] raycastHit2D = Physics2D.RaycastAll(fromObject.transform.position, direction, distance);
+
+            // For each raycast, check what was hit
+            bool ignoreObject;
+            GameObject firstObjectHit = null;
+            foreach(RaycastHit2D rayCast in raycastHit2D) {
+                // If there was a Game Object hit
+                if (rayCast.collider.gameObject) {
+                    GameObject hitObject = rayCast.collider.gameObject;
+
+                    // Check if we should be ignoring this object
+                    ignoreObject = false;
+                    foreach(string ignoreString in ignoreNamesContaining) {
+                        if (hitObject.name.Contains(ignoreString))
+                            ignoreObject = true;
+                    }
+                    if (ignoreObject) {
+                        continue;
+                    }
+                    
+
+                    firstObjectHit = rayCast.collider.gameObject;
+                    break;
+                }
+            }
+
+            return firstObjectHit;
+        }
+
         // VOID FUNCTIONS
 
         public static void ExamplePrint(string text) {

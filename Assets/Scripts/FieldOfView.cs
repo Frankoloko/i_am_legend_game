@@ -10,10 +10,9 @@ using Francois.Utilities2D;
 
 public class FieldOfView : MonoBehaviour
 {
-    [SerializeField] public GameObject rotatingObject; // The object whose Z rotation distances the view angle
-
+    [SerializeField] private GameObject rotatingObject; // The object whose Z rotation distances the view angle
     [SerializeField] private LayerMask viewBlockLayer; // The layers that will block the view/light
-    [SerializeField] private LayerMask seeThroughLayer; // A layer that will not be caught in the "Is in view" ray
+
     private Mesh mesh;
     private float FOV;
     private float aimDirection;
@@ -31,6 +30,11 @@ public class FieldOfView : MonoBehaviour
     }
 
     void LateUpdate() {
+        // IMPORTANT: I think this entire function about field of view can be removed for the enemies
+        // Because the logic that checks what was hit doesn't use this field of view at all
+        // This field of view is literally just there to create a cone mesh object to put a material on
+        // If anything we should move this to the init so that it only creates the cone on startup
+
         aimDirection = FrancoisUtilities2D.GetAngleFromVector3(Vector3.zero) + FOV / 2f;
         // FrancoisUtilities2D.DebugDrawTowardsAngle(rotatingObject, aimDirection); // Leave here for debug purposes
 
@@ -60,11 +64,13 @@ public class FieldOfView : MonoBehaviour
             RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, vectorFromAngle, viewDistance, viewBlockLayer);
             if (raycastHit2D.collider == null) {
                 // Didn't hit anything, set vertex at max distance
+                
                 vertex = origin + vectorFromAngle * viewDistance;
             } else {
                 // Hit object
                 vertex = raycastHit2D.point;
             }
+            Debug.DrawLine(origin, vertex);
             
             vertices[vertexIndex] = vertex;
 
@@ -111,44 +117,17 @@ public class FieldOfView : MonoBehaviour
         }
 
         // Cast a ray from this position towards the searcObject's direction
-        RaycastHit2D[] raycastHit2D = Physics2D.RaycastAll(rotatingObject.transform.position, directionToSearchObject, viewDistance);
-
-        // // Get the first object hit that is not a part of this object's parents
-        // List<GameObject> allParents = FrancoisUtilities2D.GetAllParentsUpwards(this.gameObject);
-        // RaycastHit2D firstObjectHit = new RaycastHit2D();
-        // foreach(RaycastHit2D rayCast in raycastHit2D) {
-        //     if (rayCast.collider.transform.parent) {
-        //         GameObject hitObject = rayCast.collider.transform.parent.gameObject;
-        //         Debug.Log(hitObject);
-        //         if (!allParents.Contains(hitObject)) {
-        //             firstObjectHit = rayCast;
-        //         }
-        //     }
-        // }
-        // Debug.Break();
-
-        // RaycastHit2D firstObjectHit = new RaycastHit2D();
-        // foreach(RaycastHit2D rayCast in raycastHit2D) {
-        //     if (rayCast.collider.transform.parent) {
-        //         GameObject hitObject = rayCast.collider.transform.parent.gameObject;
-        //         Debug.Log(hitObject.layer);
-        //     }
-        // }
-        // Debug.Break();
-
-        // CONTINUE HERE:
-        // Ek dink ek moet uitvind hoe om multiple layer op iets te sit. Want die enemies kort n "Enemies" layer, maar hulle kort ook n "SeeThrough" layer
-        // Want ek moet basies kry dat enemies nie mekaar raak raycast nie
-        // Unless ek net n "ignore list" hier in sit met die actual object names "Enemy" of so iets
+        string[] ignoreNamesContaining = new string[]{"Enemy"};
+        GameObject firstObjectHit = FrancoisUtilities2D.GetFirstObjectInView(rotatingObject, directionToSearchObject, viewDistance, ignoreNamesContaining);
 
         // Check if anything was hit at all
-        if (firstObjectHit.collider == null) {
+        if (firstObjectHit == null) {
             // Nothing was hit
             return false;
         }
 
         // Check if something other than the searchObject was hit
-        if (firstObjectHit.collider.gameObject != searchObject) {
+        if (firstObjectHit != searchObject) {
             // Something else was hit, but it's not the search object
             return false;
         }
