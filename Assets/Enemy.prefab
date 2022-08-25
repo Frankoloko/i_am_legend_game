@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fieldOfViewObject: {fileID: 4532597941661117370}
-  chaseObject: {fileID: 0}
+  chaseObjectString: Player
 --- !u!50 &3468784154898571650
 Rigidbody2D:
   serializedVersion: 4
