@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 namespace Francois.Utilities2D {
     public static class FrancoisUtilities2D {
@@ -76,6 +77,11 @@ namespace Francois.Utilities2D {
             }
 
             return firstObjectHit;
+        }
+
+        public static IEnumerable<GameObject> GetObjectsWithName(string name) {
+            // This will get all objects matching the given name
+            return Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == name);
         }
 
         // VOID FUNCTIONS
