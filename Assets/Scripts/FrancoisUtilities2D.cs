@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Linq;
 
 namespace Francois.Utilities2D {
     public static class FrancoisUtilities2D {
@@ -79,9 +78,18 @@ namespace Francois.Utilities2D {
             return firstObjectHit;
         }
 
-        public static IEnumerable<GameObject> GetObjectsWithName(string name) {
-            // This will get all objects matching the given name
-            return Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == name);
+        public static GameObject[] GetObjectsWithName(string name){
+            int a = GameObject.FindObjectsOfType <GameObject>().Length;
+            GameObject[] arr=new GameObject[a];
+            int FluentNumber = 0;
+            for (int i=0; i<a; i++) {
+                if (GameObject.FindObjectsOfType<GameObject> () [i].name == name) {
+                    arr [FluentNumber] = GameObject.FindObjectsOfType<GameObject> () [i];
+                    FluentNumber++;
+                }
+            }
+            Array.Resize (ref arr, FluentNumber);
+            return arr;
         }
 
         // VOID FUNCTIONS

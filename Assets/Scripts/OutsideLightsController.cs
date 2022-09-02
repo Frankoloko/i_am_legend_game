@@ -5,20 +5,25 @@ using Francois.Utilities2D;
 
 public class OutsideLightsController : MonoBehaviour
 {
+    float updateSpeed = 28f; // Higher value ==  Slower update
+
     // Lights related variables
     IEnumerable<GameObject> outsideLights;
-    float lightsChangeValue = 0.07f;
+    float lightsChangeValue;
     float lightsStartingValue = 2f;
     static bool lightsOn = true;
     static bool lightsBusyChanging = false;
 
     // House View Covers related values
     IEnumerable<GameObject> houseViewCoversRoofs;
-    float houseViewCoverChangeValue = 0.1f;
+    float houseViewCoverChangeValue;
 
     void Start() {
         outsideLights = FrancoisUtilities2D.GetObjectsWithName("OutsideLight");
         houseViewCoversRoofs = FrancoisUtilities2D.GetObjectsWithName("HouseViewCoverRoof");
+
+        lightsChangeValue = lightsStartingValue / updateSpeed;
+        houseViewCoverChangeValue = 1f / updateSpeed;
 
         // Use these to trigger everything to turn on
         lightsBusyChanging = true;
@@ -84,6 +89,7 @@ public class OutsideLightsController : MonoBehaviour
         foreach (GameObject houseViewCoverRoof in houseViewCoversRoofs)
         {
             Color color = houseViewCoverRoof.GetComponent<SpriteRenderer>().color;
+            Debug.Log(color.a);
             color.a -= houseViewCoverChangeValue;
             houseViewCoverRoof.GetComponent<SpriteRenderer>().color = color;
         }
@@ -95,6 +101,7 @@ public class OutsideLightsController : MonoBehaviour
         foreach (GameObject houseViewCoverRoof in houseViewCoversRoofs)
         {
             Color color = houseViewCoverRoof.GetComponent<SpriteRenderer>().color;
+            // Debug.Log(color.a);
             color.a += houseViewCoverChangeValue;
             houseViewCoverRoof.GetComponent<SpriteRenderer>().color = color;
         }
