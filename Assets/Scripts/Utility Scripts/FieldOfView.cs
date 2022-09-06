@@ -117,7 +117,7 @@ public class FieldOfView : MonoBehaviour
         }
 
         // Cast a ray from this position towards the searcObject's direction
-        string[] ignoreNamesContaining = new string[]{"Enemy"};
+        string[] ignoreNamesContaining = new string[]{"Enemy", "BearTrap"};
         GameObject firstObjectHit = FrancoisUtilities2D.GetFirstObjectInView(rotatingObject, directionToSearchObject, viewDistance, ignoreNamesContaining);
 
         // Check if anything was hit at all

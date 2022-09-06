@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 559807255230769186}
   - component: {fileID: 3572149630487785528}
   - component: {fileID: 1100178381884820440}
-  - component: {fileID: 7645937444558348850}
   - component: {fileID: 3468784154898571650}
+  - component: {fileID: 5788159966810976675}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 559807255230769185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.51, y: 1.82, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.48735, y: 0.48735, z: 0.48735}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 909439794198591890}
@@ -48,9 +48,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e1d933c452722428697887892f280373, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0023d6eb656284566b1378a46129ba65, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -172,20 +172,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.78, y: 1.75}
   m_EdgeRadius: 0
---- !u!114 &7645937444558348850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559807255230769185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d51674407187040efb535da7247fcc8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fieldOfViewObject: {fileID: 4532597941661117370}
-  chaseObjectString: Player
 --- !u!50 &3468784154898571650
 Rigidbody2D:
   serializedVersion: 4
@@ -207,6 +193,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5788159966810976675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559807255230769185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4198cb3726cf44b29872385573f2cec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldOfViewObject: {fileID: 4532597941661117370}
+  chaseObjectString: Player
+  idleMp3: {fileID: 8300000, guid: 0023d6eb656284566b1378a46129ba65, type: 3}
+  chaseMp3: {fileID: 8300000, guid: 06e383fe018b644abbca38aee0a8140f, type: 3}
+  deathMp3: {fileID: 8300000, guid: 5f9ad1f95637045ee9d5eb3fd4e43d8f, type: 3}
 --- !u!1 &1075074875266392791
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 909439794198591890}
   - component: {fileID: 8108282093539661447}
+  - component: {fileID: 7786799419505913780}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -291,6 +295,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7786799419505913780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075074875266392791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52801ed484a6d440fb5c11e6e28a652d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: c3dccb40d8ee64d278273877c67e863f, type: 2}
 --- !u!1 &4532597941661117370
 GameObject:
   m_ObjectHideFlags: 0

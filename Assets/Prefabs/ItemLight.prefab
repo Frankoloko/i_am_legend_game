@@ -122,7 +122,6 @@ GameObject:
   - component: {fileID: 479779639485060813}
   - component: {fileID: 8690054449394953445}
   - component: {fileID: 4981396872541962852}
-  - component: {fileID: 7311673816704809410}
   m_Layer: 11
   m_Name: Image
   m_TagString: Untagged
@@ -223,20 +222,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.49, y: 9.5}
   m_EdgeRadius: 0
---- !u!114 &7311673816704809410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5547911702277236659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52801ed484a6d440fb5c11e6e28a652d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseMaterial: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  outlineMaterial: {fileID: 2100000, guid: c3dccb40d8ee64d278273877c67e863f, type: 2}
 --- !u!1 &7569697083478661935
 GameObject:
   m_ObjectHideFlags: 0

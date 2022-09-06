@@ -89,7 +89,6 @@ public class OutsideLightsController : MonoBehaviour
         foreach (GameObject houseViewCoverRoof in houseViewCoversRoofs)
         {
             Color color = houseViewCoverRoof.GetComponent<SpriteRenderer>().color;
-            Debug.Log(color.a);
             color.a -= houseViewCoverChangeValue;
             houseViewCoverRoof.GetComponent<SpriteRenderer>().color = color;
         }
@@ -101,7 +100,6 @@ public class OutsideLightsController : MonoBehaviour
         foreach (GameObject houseViewCoverRoof in houseViewCoversRoofs)
         {
             Color color = houseViewCoverRoof.GetComponent<SpriteRenderer>().color;
-            // Debug.Log(color.a);
             color.a += houseViewCoverChangeValue;
             houseViewCoverRoof.GetComponent<SpriteRenderer>().color = color;
         }
