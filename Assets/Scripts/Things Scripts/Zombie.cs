@@ -62,7 +62,7 @@ public class Zombie : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.name.Contains("BearTrap")) {
-            collider.gameObject.SendMessage("Close");
+            collider.gameObject.SendMessage("Close", this.gameObject);
             Die(collider);
         }
     }

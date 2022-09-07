@@ -6,14 +6,15 @@ public class HighlightSelf : MonoBehaviour
 {
     public Material baseMaterial;
     public Material outlineMaterial;
+    public GameObject spriteObject;
 
     void DeactivateHighlight()
     {
-        gameObject.GetComponent<SpriteRenderer>().material = baseMaterial;
+        spriteObject.GetComponent<SpriteRenderer>().material = baseMaterial;
     }
 
     void ActivateHighlight()
     {
-        gameObject.GetComponent<SpriteRenderer>().material = outlineMaterial;
+        spriteObject.GetComponent<SpriteRenderer>().material = outlineMaterial;
     }
 }
